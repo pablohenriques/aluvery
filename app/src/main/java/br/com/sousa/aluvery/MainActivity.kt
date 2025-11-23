@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import br.com.sousa.aluvery.sampledata.sampleSections
 import br.com.sousa.aluvery.ui.screen.HomeScreen
 import br.com.sousa.aluvery.ui.theme.AluveryTheme
 
@@ -23,7 +24,9 @@ class MainActivity : ComponentActivity() {
 fun App() {
     AluveryTheme {
         Surface {
-            HomeScreen()
+            HomeScreen(
+                sampleSections
+            )
         }
     }
 }

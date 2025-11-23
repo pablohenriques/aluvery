@@ -1,13 +1,13 @@
 package br.com.sousa.aluvery.ui.components
 
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.com.sousa.aluvery.model.Product
 import br.com.sousa.aluvery.sampledata.sampleProducts
+import br.com.sousa.aluvery.ui.theme.AluveryTheme
 
 
 @Composable
@@ -31,18 +32,16 @@ fun ProductSection(
             fontSize = 20.sp,
             fontWeight = FontWeight(400)
         )
-        Row(
+        LazyRow(
             Modifier
                 .padding(top = 8.dp)
-                .fillMaxWidth()
-                .horizontalScroll(rememberScrollState()),
-            horizontalArrangement = Arrangement.spacedBy(16.dp)
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
+            contentPadding = PaddingValues(horizontal = 16.dp)
         ) {
-            Spacer(Modifier)
-            for (p in products) {
+            items(products) { p ->
                 ProductItem(product = p)
             }
-            Spacer(Modifier)
         }
     }
 }
@@ -50,7 +49,11 @@ fun ProductSection(
 @Preview(showBackground = true)
 @Composable
 private fun ProductSectionPreview() {
-    ProductSection(title = "Promoções", products = sampleProducts)
+    AluveryTheme {
+        Surface {
+            ProductSection("Promoções", products = sampleProducts)
+        }
+    }
 }
 
 
