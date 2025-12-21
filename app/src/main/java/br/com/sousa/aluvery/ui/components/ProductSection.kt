@@ -19,23 +19,27 @@ import br.com.sousa.aluvery.model.Product
 import br.com.sousa.aluvery.sampledata.sampleProducts
 import br.com.sousa.aluvery.ui.theme.AluveryTheme
 
-
 @Composable
-fun ProductSection(
+fun ProductsSection(
     title: String,
     products: List<Product>,
-    modifier: Modifier = Modifier,
+    modifier: Modifier = Modifier
 ) {
     Column(modifier) {
         Text(
             text = title,
-            Modifier.padding(start = 16.dp, end = 16.dp),
+            Modifier.padding(
+                start = 16.dp,
+                end = 16.dp
+            ),
             fontSize = 20.sp,
             fontWeight = FontWeight(400)
         )
         LazyRow(
             Modifier
-                .padding(top = 8.dp)
+                .padding(
+                    top = 8.dp
+                )
                 .fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             contentPadding = PaddingValues(horizontal = 16.dp)
@@ -49,12 +53,10 @@ fun ProductSection(
 
 @Preview(showBackground = true)
 @Composable
-private fun ProductSectionPreview() {
+private fun ProductsSectionPreview() {
     AluveryTheme {
         Surface {
-            ProductSection("Promoções", products = sampleProducts)
+            ProductsSection("Promoções", products = sampleProducts)
         }
     }
 }
-
-
